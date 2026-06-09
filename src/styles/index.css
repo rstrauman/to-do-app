@@ -1,1 +1,8 @@
 @import "./container.css";
+
+body {
+    height: 100svh;
+    width: 100vw;
+    background: linear-gradient(90deg, rgb(25, 25, 25), rgb(30, 30, 30));
+}
+

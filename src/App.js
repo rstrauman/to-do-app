@@ -21,7 +21,7 @@ function App() {
     const [tasks, dispatch] = useReducer(taskReducer, [], () => {
         const savedTasks = localStorage.getItem("tasks");
         
-        return savedTasks ? JSON.parse(saved) : [];
+        return savedTasks ? JSON.parse(savedTasks) : [];
     });
  
     useEffect(() => {

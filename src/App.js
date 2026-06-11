@@ -3,8 +3,19 @@ import AddTask from './components/AddTask';
 
 import { useReducer } from "react";
 
-const addTask = (task, action) => {
-
+const updateTask = (task, action) => {
+    switch(action.type) {
+        case "ADD":
+            break;
+        case "EDIT":
+            break;
+        case "DELETE":
+            break;
+        case "COMPLETE":
+            break;
+        default: 
+            return;
+    }
 }
 
 function App() {
@@ -13,13 +24,13 @@ function App() {
     let tasks = [{
         id: 0,
         title: "",
-        date: "2025-06-01"
+        date: "2025-06-01",
         isComplete: false
     }];
 
     return (
         <div className="container">
-            <AddTask/>
+            <AddTask updateTask={updateTask}/>
             <TaskContainer tasks={tasks}/>
         </div>
     );

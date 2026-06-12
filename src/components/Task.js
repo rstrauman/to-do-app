@@ -8,7 +8,7 @@ function Task(props) {
             <div className="right-task">
                 <div onClick={() => {props.dispatch({ type: "COMPLETE", payload: props.task.id });}}>Complete</div>
                 <div>Edit</div>
-                <div>Delete</div>
+                <div onClick={() => {props.dispatch({ type: "DELETE", payload: props.task.id });}}>Delete</div>
             </div>
         </div>
     );

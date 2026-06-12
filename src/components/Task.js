@@ -2,8 +2,8 @@ function Task(props) {
     return (
         <div className="task-card">
             <div className="left-task">
-                <h3>{props.tasks.task}</h3>
-                <p className="date"></p>
+                <h3>{props.task.title}</h3>
+                <p className="date">{props.task.date}</p>
             </div>
             <div className="right-task">
                 <div>Complete</div>

@@ -4,7 +4,7 @@ function AddTask(props) {
     const [text, setText] = useState("");
 
     const addTask = () => {
-        if (text.trim() === null) return;
+        if (text.trim() === "") return;
 
         const newTask = {
             id: Date.now(),

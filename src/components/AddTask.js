@@ -1,19 +1,34 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function AddTask(props) {
     const [text, setText] = useState("");
 
+    useEffect(() => {
+        if (props.taskEdit) {
+            setText(props.taskEdit.title);
+        } else {
+            setText("");
+        }
+    }, [props.taskEdit]);
+
     const addTask = () => {
         if (text.trim() === "") return;
 
-        const newTask = {
-            id: Date.now(),
-            title: text,
-            date: new Date().toISOString().split('T')[0],
-            isComplete: false
-        };
-
-        props.dispatch({ type: "ADD", payload: newTask });
+        if (props.taskEdit) {
+            props.dispatch({ 
+                type: "EDIT", 
+                payload: { id: props.taskEdit.id, newTitle: text } 
+            });
+            props.setTaskEdit(null); 
+        } else {
+                const newTask = {
+                id: Date.now(),
+                title: text,
+                date: new Date().toLocaleString('en-us'),
+                isComplete: false
+            };
+            props.dispatch({ type: "ADD", payload: newTask });
+        }
         setText(""); 
     }
 
@@ -22,7 +37,10 @@ function AddTask(props) {
             <h2>To-Do List</h2>
             <div className="input-container">
                 <input type="text" value={text} onChange={(e) => setText(e.target.value)} placeholder="What's on your agenda today?"/>
-                <button onClick={addTask}>Add Task</button>
+                <button onClick={addTask}>{props.taskEdit ? "Update Task" : "Add Task"}</button>
+                {props.taskToEdit && (
+                    <button onClick={() => props.setTaskEdit(null)}>Cancel</button>
+                )}
             </div>
         </div>
     );

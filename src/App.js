@@ -1,6 +1,6 @@
 import TaskContainer from './components/TaskContainer';
 import AddTask from './components/AddTask';
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useState } from "react";
 
 const taskReducer = (state, action) => {
     switch (action.type) {
@@ -11,7 +11,7 @@ const taskReducer = (state, action) => {
         case "COMPLETE":
             return state.map(task => task.id === action.payload ? { ...task, isComplete: !task.isComplete } : task);
         case "EDIT":
-            return state.map(task => task.id === action.payload.id ? { ...task, title: action.payload.newTitle, date: "2026-06-11" } : task);
+            return state.map(task => task.id === action.payload.id ? { ...task, title: action.payload.newTitle, date: new Date().toLocaleString('en-US') } : task);
         default:
             return state;
     }
@@ -23,6 +23,8 @@ function App() {
         
         return savedTasks ? JSON.parse(savedTasks) : [];
     });
+
+    const [taskEdit, setTaskEdit] = useState(null);
  
     useEffect(() => {
         localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -30,8 +32,8 @@ function App() {
 
     return (
         <div className="container">
-            <AddTask dispatch={dispatch}/>
-            <TaskContainer tasks={tasks} dispatch={dispatch}/>
+            <AddTask dispatch={dispatch} taskEdit={taskEdit} setTaskEdit={setTaskEdit}/>
+            <TaskContainer tasks={tasks} dispatch={dispatch} setTaskEdit={setTaskEdit}/>
         </div>
     );
 }

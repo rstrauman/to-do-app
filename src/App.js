@@ -31,7 +31,7 @@ function App() {
     return (
         <div className="container">
             <AddTask dispatch={dispatch}/>
-            <TaskContainer tasks={tasks} disptatch={dispatch}/>
+            <TaskContainer tasks={tasks} dispatch={dispatch}/>
         </div>
     );
 }

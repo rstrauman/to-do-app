@@ -36,9 +36,9 @@ function AddTask(props) {
         <div className="upper-container">
             <h2>To-Do List</h2>
             <div className="input-container">
-                <input type="text" value={text} onChange={(e) => setText(e.target.value)} placeholder="What's on your agenda today?"/>
+                <input type="text" value={text} onChange={(e) => setText(e.target.value)} placeholder="What's on the agenda?"/>
                 <button onClick={addTask}>{props.taskEdit ? "Update Task" : "Add Task"}</button>
-                {props.taskToEdit && (
+                {props.taskEdit && (
                     <button onClick={() => props.setTaskEdit(null)}>Cancel</button>
                 )}
             </div>

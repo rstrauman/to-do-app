@@ -6,9 +6,9 @@ function Task(props) {
                 <p className="date">{props.task.date}</p>
             </div>
             <div className="right-task">
-                <div onClick={() => {props.dispatch({ type: "COMPLETE", payload: props.task.id });}}>Complete</div>
-                <div onClick={() => props.setTaskEdit(props.task)}>Edit</div>
-                <div onClick={() => {props.dispatch({ type: "DELETE", payload: props.task.id });}}>Delete</div>
+                <div onClick={() => {props.dispatch({ type: "COMPLETE", payload: props.task.id });}}>✅</div>
+                <div onClick={() => props.setTaskEdit(props.task)}>✏️</div>
+                <div onClick={() => {props.dispatch({ type: "DELETE", payload: props.task.id });}}>🗑️</div>
             </div>
         </div>
     );

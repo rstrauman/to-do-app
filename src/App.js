@@ -31,7 +31,7 @@ function App() {
     }, [tasks]);
 
     return (
-        <div className="container">
+        <div className="container main-container">
             <AddTask dispatch={dispatch} taskEdit={taskEdit} setTaskEdit={setTaskEdit}/>
             <TaskContainer tasks={tasks} dispatch={dispatch} setTaskEdit={setTaskEdit}/>
         </div>
